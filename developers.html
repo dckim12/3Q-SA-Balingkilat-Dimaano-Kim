@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About the Developers</title>
 
-
 <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Poppins:wght@300;400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -17,7 +16,7 @@ body {
   color: #5d4037;
 }
 
-/* HEADER */
+
 .top-header {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
@@ -35,7 +34,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* Cards Container */
+
 .card-container {
   display: flex;
   justify-content: center;
@@ -44,7 +43,7 @@ body {
   margin-top: 50px;
 }
 
-/* Developer Card */
+
 .card {
   background: white;
   width: 260px;
@@ -66,7 +65,7 @@ body {
   margin-bottom: 15px;
 }
 
-.card h3 {
+.card h2 {
   margin: 10px 0;
   font-size: 24px;
   color: #4e342e;
@@ -77,10 +76,9 @@ body {
   font-size: 16px;
   margin-top: 10px;
   line-height: 1.6;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* Sections */
+
 section {
   margin-top: 60px;
   padding: 0 20px;
@@ -93,21 +91,17 @@ section h2 {
   letter-spacing: 1px;
 }
 
-/* CHANGED — paragraph now same font as tips */
 section p {
   max-width: 650px;
   margin: 15px auto;
   font-size: 18px;
   line-height: 1.7;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* CHANGED — tips font weight matched */
 ul {
   list-style: none;
   padding: 0;
   font-size: 18px;
-  font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
 
@@ -115,7 +109,7 @@ ul li {
   margin: 8px 0;
 }
 
-/* Button */
+
 button {
   margin: 40px 0;
   padding: 12px 30px;
@@ -136,15 +130,17 @@ button:hover {
 
 <body>
 
-<div class="top-header">
+<header class="top-header">
   <h1>👩‍💻 Meet the Developers</h1>
-</div>
+</header>
+
+<main>
 
 <div class="card-container">
 
   <div class="card">
-    <img src="https://static.wikia.nocookie.net/peanuts/images/9/9f/Fifi_in_The_Peanuts_Movie_02.jpg/revision/latest?cb=20160106052511">
-    <h3>Denise Kim</h3>
+    <img src="https://static.wikia.nocookie.net/peanuts/images/9/9f/Fifi_in_The_Peanuts_Movie_02.jpg/revision/latest?cb=20160106052511" alt="Profile picture for Denise Kim">
+    <h2>Denise Kim</h2>
     <div class="info">
       Game Coder <br>
       Nickname: Denise <br>
@@ -153,16 +149,35 @@ button:hover {
   </div>
 
   <div class="card">
-    <img src="https://i0.wp.com/www.toonsmag.com/wp-content/uploads/2024/01/photo-output_9.jpeg?fit=758%2C569&ssl=1">
-    <h3>Ella Dimaano</h3>
+    <img src="https://i0.wp.com/www.toonsmag.com/wp-content/uploads/2024/01/photo-output_9.jpeg?fit=758%2C569&ssl=1" alt="Profile picture for Ella Dimaano">
+    <h2>Ella Dimaano</h2>
     <div class="info">
       Game Designer<br>
       Nickname: Ella <br>
-      "snoopy is the goat"
+      "i ship snoopy & fifi"
     </div>
   </div>
 
 </div>
+
+<section>
+<h2>How to Play 🕹️</h2>
+
+<p>
+Find Snoopy is a memory and observation game. Snoopy starts by appearing under one of the three cups. 
+Memorize his location carefully before the cups begin to shuffle.
+</p>
+
+<ul>
+  <li>Press <b>Start Game</b> to begin the round</li>
+  <li>Snoopy will appear briefly under a cup</li>
+  <li>The cups will shuffle positions</li>
+  <li>Click the cup where you think Snoopy is hiding</li>
+  <li>You gain a point if correct, but lose a life if wrong</li>
+  <li>The game speeds up every round</li>
+  <li>You win after surviving all rounds!</li>
+</ul>
+</section>
 
 <section>
 <h2>Why We Made This Game 🎮</h2>
@@ -174,12 +189,31 @@ Inspired by the classic shell game, we added cute visuals and smooth animations.
 
 <section>
 <h2>Game Tips 🐶</h2>
+<ul>
+  <li>★ Watch Snoopy carefully at the start </li>
+  <li>★ Don’t click while the circles are moving </li>
+  <li>★ The game gets faster each round </li>
+</ul>
+</section>
 
-  <li>Watch Snoopy carefully at the start 👀</li>
-  <li>Don’t click while the circles are moving ✨</li>
-  <li>The game gets faster each round ⚡</li>
+<section>
+<h2>References 📚</h2>
+
+<p><strong>Background Music:</strong><br>
+https://www.youtube.com/watch?v=Ht-j5R2nu24</p>
+
+<p><strong>Fonts Used:</strong><br>
+Google Fonts — Grandstander, Poppins, and Lora</p>
+
+<p><strong>Game Inspiration:</strong><br>
+Classic Shell Game (Cup and Ball guessing game)</p>
+
+<p><strong>Images:</strong><br>
+Peanuts characters belong to Peanuts Worldwide LLC. Images used for educational purposes only.</p>
 
 </section>
+
+</main>
 
 <button onclick="window.location.href='index.html'">Back to Game 🏠</button>
 
