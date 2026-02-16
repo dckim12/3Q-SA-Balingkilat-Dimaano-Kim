@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Snoopy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Poppins:wght@300;400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fef6e4, #fde2e4);
+  text-align: center;
+}
+
+.header {
+  background: #FFF8E1;
+  padding: 25px 20px 30px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+h1 {
+  font-family: 'Grandstander', cursive;
+  font-size: 52px;
+  color: #5a3d2b;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow:
+    3px 3px 0 #ffd36b,
+    6px 6px 12px rgba(0,0,0,0.25);
+}
+
+.controls {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dev-icon {
+  background: white;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.music-btn {
+  background: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.music-btn:hover { background: #ffe0b2; }
+
+.game-info {
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #5d4037;
+}
+
+.container {
+  position: relative;
+  width: 600px;
+  height: 250px;
+  margin: 40px auto;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  background-color: #a1887f;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: left 0.8s ease, top 0.4s ease, transform 0.2s ease;
+}
+
+.circle:hover { transform: scale(1.05); }
+
+.snoopy {
+  width: 70px;
+  display: none;
+  pointer-events: none;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 20px;
+  background-color: #ffcc80;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Grandstander', cursive;
+  transition: background 0.3s ease;
+}
+
+button:hover { background-color: #ffb74d; }
+
+.start-holder {
+  position: relative;
+  height: 0;
+}
+
+#startBtn {
+  position: relative;
+  top: -85px;
+  z-index: 5;
+}
+
+#message {
+  position: absolute;
+  left: 50%;
+  top: 165px;
+  transform: translateX(-50%);
+  font-size: 26px;
+  font-weight: 700;
+  font-family: 'Grandstander', cursive;
+  color: #4e342e;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<div id="player" style="width:0;height:0;"></div>
+
+<div class="header">
+  <h1>🐾 Find Snoopy 🐾</h1>
+
+  <div class="controls">
+    <div class="dev-icon" onclick="location.href='developers.html'">👩‍💻</div>
+    <button class="music-btn" onclick="toggleMute()">🔊</button>
+    <input type="range" min="0" max="100" value="50" onchange="changeVolume(this.value)">
+  </div>
+
+  <div class="game-info">
+    Round: <span id="round">1</span> |
+    Score: <span id="score">0</span> |
+    Lives: <span id="lives">3</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="circle" id="circle0"><img class="snoopy" src="PASTE_BASE64_STRING_HERE"></div>
+  <div class="circle" id="circle1"><img class="snoopy" src="PASTE_BASE64_STRING_HERE"></div>
+  <div class="circle" id="circle2"><img class="snoopy" src="PASTE_BASE64_STRING_HERE"></div>
+</div>
+
+<p id="message"></p>
+
+<div class="start-holder">
+  <button id="startBtn" onclick="startRound()">Start Game</button>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+let player;
+let musicStarted = false;
+let playerReady = false;
+let userPressedStart = false;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    videoId: 'Ht-j5R2nu24',
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      disablekb: 1,
+      modestbranding: 1,
+      loop: 1,
+      playlist: 'Ht-j5R2nu24'
+    },
+    events: {
+      onReady: function (event) {
+        player = event.target;
+        player.setVolume(50);
+        playerReady = true;
+
+        if (userPressedStart && !musicStarted) {
+          player.playVideo();
+          musicStarted = true;
+        }
+      }
+    }
+  });
+}
+
+function toggleMute(){ if(player) player.isMuted()?player.unMute():player.mute(); }
+function changeVolume(v){ if(player) player.setVolume(v); }
+
+let positions=[
+  "calc(50% - 260px)",
+  "calc(50% - 60px)",
+  "calc(50% + 140px)"
+];
+
+let snoopyCircleIndex=Math.floor(Math.random()*3);
+let score=0,lives=3,round=1;
+let shuffleSpeed=1200,canClick=false;
+
+const circles=document.querySelectorAll(".circle");
+const message=document.getElementById("message");
+const startBtn=document.getElementById("startBtn");
+
+circles.forEach((c,i)=>{c.style.left=positions[i];c.style.top='60px';});
+
+function showSnoopy(){circles[snoopyCircleIndex].querySelector(".snoopy").style.display="block";}
+function hideSnoopy(){circles.forEach(c=>c.querySelector(".snoopy").style.display="none");}
+
+function swapTwo(i,j,cb){
+  circles[i].style.top='0px';circles[j].style.top='120px';
+  setTimeout(()=>{
+    [positions[i],positions[j]]=[positions[j],positions[i]];
+    circles[i].style.left=positions[i];
+    circles[j].style.left=positions[j];
+    circles[i].style.top='60px';circles[j].style.top='60px';
+    cb&&cb();
+  },shuffleSpeed/2);
+}
+
+function shuffle(times){
+  let count=0;canClick=false;
+  function next(){
+    if(count>=times){
+      canClick=true;
+      message.textContent = "Where is Snoopy? 🐶";
+      return;
+    }
+    let i=Math.floor(Math.random()*3),j;
+    do{j=Math.floor(Math.random()*3);}while(j===i);
+    swapTwo(i,j,()=>{count++;setTimeout(next,400);});
+  } next();
+}
+
+function resetGame(){
+  score=0;lives=3;round=1;shuffleSpeed=1200;
+  snoopyCircleIndex=Math.floor(Math.random()*3);
+  updateInfo();
+  message.textContent="";
+  hideSnoopy();
+  startBtn.textContent="Start Game";
+}
+
+function startRound(){
+
+  userPressedStart = true;
+
+  if (playerReady && !musicStarted) {
+    player.playVideo();
+    musicStarted = true;
+  }
+
+  if(lives<=0||round>10){resetGame();return;}
+
+  startBtn.textContent="Next Round";
+
+  message.textContent='Memorize Snoopy... 👀';
+  hideSnoopy();
+  showSnoopy();
+
+  setTimeout(()=>{hideSnoopy();shuffle(4+round);},1500);
+}
+
+circles.forEach((c,index)=>{
+  c.addEventListener('click',()=>{
+    if(!canClick)return;
+    canClick=false;
+    showSnoopy();
+
+    if(index===snoopyCircleIndex){
+      score++;round++;
+      message.textContent="Correct! 🎉";
+      shuffleSpeed=Math.max(600,shuffleSpeed-50);
+    } else {lives--;message.textContent="Wrong! ❌";}
+
+    updateInfo();checkGame();
+  });
+});
+
+function updateInfo(){
+  document.getElementById('round').textContent=round;
+  document.getElementById('score').textContent=score;
+  document.getElementById('lives').textContent=lives;
+}
+
+function checkGame(){
+  if(lives<=0){message.textContent="Game Over 💀";startBtn.textContent="Play Again";}
+  if(round>10){message.textContent="You Win! 🏆";startBtn.textContent="Play Again";}
+}
+</script>
+
+</body>
+</html>
