@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About the Developers</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@400;700&family=Poppins:wght@300;400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fef6e4, #fde2e4);
+  text-align: center;
+  color: #5d4037;
+}
+
+/* HEADER */
+.top-header {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+}
+
+.top-header h1 {
+  margin: 0;
+  font-size: 40px;
+  color: #6d4c41;
+  font-family: 'Grandstander', cursive;
+  letter-spacing: 2px;
+}
+
+/* Cards Container */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+/* Developer Card */
+.card {
+  background: white;
+  width: 260px;
+  padding: 25px;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 24px;
+  color: #4e342e;
+  font-family: 'Grandstander', cursive;
+}
+
+.info {
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sections */
+section {
+  margin-top: 60px;
+  padding: 0 20px;
+}
+
+section h2 {
+  font-size: 28px;
+  color: #6d4c41;
+  font-family: 'Grandstander', cursive;
+  letter-spacing: 1px;
+}
+
+/* CHANGED — paragraph now same font as tips */
+section p {
+  max-width: 650px;
+  margin: 15px auto;
+  font-size: 18px;
+  line-height: 1.7;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CHANGED — tips font weight matched */
+ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+ul li {
+  margin: 8px 0;
+}
+
+/* Button */
+button {
+  margin: 40px 0;
+  padding: 12px 30px;
+  font-size: 20px;
+  background-color: #ffcc80;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Grandstander', cursive;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffb74d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-header">
+  <h1>👩‍💻 Meet the Developers</h1>
+</div>
+
+<div class="card-container">
+
+  <div class="card">
+    <img src="https://static.wikia.nocookie.net/peanuts/images/9/9f/Fifi_in_The_Peanuts_Movie_02.jpg/revision/latest?cb=20160106052511">
+    <h3>Denise Kim</h3>
+    <div class="info">
+      Game Coder <br>
+      Nickname: Denise <br>
+      "i love sauce"
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://i0.wp.com/www.toonsmag.com/wp-content/uploads/2024/01/photo-output_9.jpeg?fit=758%2C569&ssl=1">
+    <h3>Ella Dimaano</h3>
+    <div class="info">
+      Game Designer<br>
+      Nickname: Ella <br>
+      "snoopy is the goat"
+    </div>
+  </div>
+
+</div>
+
+<section>
+<h2>Why We Made This Game 🎮</h2>
+<p>
+We created Find Snoopy to combine fun and coding in one cozy game experience.
+Inspired by the classic shell game, we added cute visuals and smooth animations.
+</p>
+</section>
+
+<section>
+<h2>Game Tips 🐶</h2>
+
+  <li>Watch Snoopy carefully at the start 👀</li>
+  <li>Don’t click while the circles are moving ✨</li>
+  <li>The game gets faster each round ⚡</li>
+
+</section>
+
+<button onclick="window.location.href='index.html'">Back to Game 🏠</button>
+
+</body>
+</html>
